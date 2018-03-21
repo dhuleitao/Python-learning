@@ -52,8 +52,6 @@ Unicode标准也在不断发展，但最常用的是用两个字节表示一个�
 
 10、以Unicode表示的str通过encode\(\)方法可以编码为指定的bytes，纯英文的str可以用ASCII编码为bytes，内容是一样的，含有中文的str可以用UTF-8编码为bytes。含有在bytes中，无法显示为ASCII字符的字节，用\x\#\#显示。
 
-
-
 反过来，如果我们从网络或磁盘上读取了字节流，那么读到的数据就是bytes。要把bytes变为str，就需要用decode\(\)方法：中文的str无法用ASCII编码，因为中文编码的范围超过了ASCII编码的范围，Python会报错。
 
 ```
@@ -73,6 +71,42 @@ UnicodeEncodeError: 'ascii' codec can't encode characters in position 0-1: ordin
 >>> b'\xe4\xb8\xad\xe6\x96\x87'.decode('utf-8')
 '中文'
 ```
+
+11、如果bytes中只有一小部分无效的字节，可以传入errors='ignore'忽略错误的字节：
+
+```py
+>>> b'\xe4\xb8\xad\xff'.decode('utf-8', errors='ignore')
+'中'
+```
+
+12、len\(\)函数计算的是str的字符数，如果换成bytes，len\(\)函数就计算字节数：
+
+```py
+>>> len(b'ABC')
+3
+>>> len(b'\xe4\xb8\xad\xe6\x96\x87')
+6
+>>> len('中文'.encode('utf-8'))
+6
+```
+
+13、由于Python源代码也是一个文本文件，所以，当你的源代码中包含中文的时候，在保存源代码时，就需要务必指定保存为UTF-8编码。当Python解释器读取源代码时，为了让它按UTF-8编码读取，我们通常在文件开头写上这两行：
+
+```py
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+```
+
+14、格式化：在Python中，采用的格式化方式和C语言是一致的，用%实现，举例如下：
+
+```
+>>> 'Hello, %s' % 'world'
+'Hello, world'
+>>> 'Hi, %s, you have $%d.' % ('Michael', 1000000)
+'Hi, Michael, you have $1000000.'
+```
+
+有些时候，字符串里面的%是一个普通字符怎么办？这个时候就需要转义，用%%来表示一个%，format\(\)它会用传入的参数依次替换字符串内的占位符{0}、{1}……，不过这种方式写起来比%要麻烦得多
 
 
 
