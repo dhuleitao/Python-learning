@@ -8,15 +8,17 @@
 
 ~当索引超出了范围时，Python会报一个`IndexError`错误，所以，要确保索引不要越界，记得最后一个元素的索引是`len(classmates) - 1`。如果要取最后一个元素，除了计算索引位置外，还可以用`-1`做索引，直接获取最后一个元素：
 
-`len append insert pop del remove sort(永久) sorted（临时）reverse=True相反顺序排序  list.reverse()`
+~`len append insert pop del remove sort(永久) sorted（临时）reverse=True相反顺序排序  list.reverse()`
 
-list=\[1,2,3\]  list.sort\(\) sorted\(list\)` `
+~list=\[1,2,3\]  list.sort\(\) sorted\(list\)` `
 
-数值列表统计计算：min max sum 
+~数值列表统计计算：min max sum
 
-a=list\(range\(1,6,2\)\)
+~a=list\(range\(1,6,2\)\)
 
-列表解析list=\[value\*2 for value in range\(11\)\]
+~列表解析list=\[value\*2 for value in range\(11\)\]
+
+~切片
 
 ### tuple
 
