@@ -46,7 +46,7 @@ Python内置了字典：dict的支持，dict全称dictionary，在其他语言�
 
 要删除一个key，用
 
-`pop(key)`
+`pop(key) del dict[key]`
 
 方法，对应的value也会从dict中删除：请务必注意，dict内部存放的顺序和key放入的顺序是没有关系的。
 
@@ -64,6 +64,10 @@ Python内置了字典：dict的支持，dict全称dictionary，在其他语言�
 
 ```
 dict={'a':1,'b':2}
+遍历字典
+for key，value in dict.items():
+for key in dict.keys():
+for value in dict.values():
 ```
 
 ### set
